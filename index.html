@@ -6,10 +6,11 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/2b17b3dc6c.js" crossorigin="anonymous"></script>
+	<script src="assets/js/index.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<title>visa-paradise</title>
 </head>
 <body>
-
 	<!-- Header -->
 	<div class="header__position">
 		<header class="header">
@@ -51,7 +52,7 @@
 				<!-- Intro Title -->
 				<h1 class="intro__title">ОФОРМИТЕ ВИЗУ ПРЯМО СЕЙЧАС И НАСЛАДИТЕСЬ ОТДЫХОМ!</h1>
 
-				<div class="btn"><a href="#" class="button__link">Оформить визу</a></div>
+				<div class="btn"><a href="#register" class="button__link">Оформить визу</a></div>
 				<div class="line__btn"></div>
 
 				<!-- Intro Subtitle -->
@@ -71,7 +72,7 @@
 	<div class="information">
 		<div class="container">
 			<!-- Information Title -->
-			<div class="works__3years" id="information">опыт работы более 3 лет</div>
+			<div class="works__3years">опыт работы более 3 лет</div>
 			<!-- Item 1 -->
 			<div class="information__item">
 				<img src="assets\image\icons\information__icons/handshake.png" alt="error404" class="information__icon">
@@ -100,7 +101,7 @@
 		<div class="container">
 			<div class="stages__inner">
 				<!-- Stages Title -->
-				<div class="stages3__easy">3 простых шага, чтобы получить визу</div>
+				<div class="stages3__easy" id="companion">3 простых шага, чтобы получить визу</div>
 
 				<!-- Stages Text -->
 				<div class="stages3__description">
@@ -147,7 +148,7 @@
 	<div class="companion">
 		<div class="container">
 			<!-- Title -->
-			<div class="h3__order" id="companion"><h3>О НАШЕЙ КОМПАНИИ И ФИРМЕ</h3></div>
+			<div class="h3__order"><h3>О НАШЕЙ КОМПАНИИ И ФИРМЕ</h3></div>
 			<!-- Companion Inner -->
 			<div class="companion__inner">
 				<!-- Order1 -->
@@ -175,7 +176,7 @@
 		<div class="container">
 			<div class="package__inner">
 				<!-- Package Title -->
-				<div class="package__title">ЕДИНЫЙ ПАКЕТ ДОКУМЕНТОВ</div>
+				<div class="package__title" id="information">ЕДИНЫЙ ПАКЕТ ДОКУМЕНТОВ</div>
 
 				<!-- Package Subtitle -->
 				<div class="package__subtitle">документы которые от вас требуются</div>
@@ -202,7 +203,7 @@
 				<!-- Package Links 1 -->
 				<div class="package__links">
 					<img src="assets/image/icons/mail.png" alt="" class="package__icon" width="60px" height="60px">
-					<div class="package__text"><a href="#" class="package__link">узнать больше подробностей и<br>информации</a></div>
+					<div class="package__text"><a href="javascript:PopUpShow()" class="package__link">узнать больше подробностей и<br>информации</a></div>
 				</div>
 
 				<!-- Package Links 2 -->
@@ -215,30 +216,33 @@
 	</div> <!-- Package Documents -->
 
 
-	<!-- Mape -->
+	<!-- Map -->
 	<div class="map">
 		<div class="container">
 			<div class="map__inner">
+
+				<!-- Map Item 1 -->
 				<div class="map__item">
 					<img src="assets/image/icons/gps.png" alt="" class="map__icon" width="80px" width="80px">
-
 					<div class="map__text">здесь вы можете узнать местоположение</div>
 				</div>
 
+				<!-- Map Item 2 -->
 				<div class="map__item">
 					<img src="assets/image/icons/mobile_phone.png" alt="" class="map__icon" width="80px" width="80px">
-
 					<div class="map__text">откройте карту в телефоне</div>
 				</div>
 
+				<!-- Map Item 3 -->
 				<div class="map__item">
 					<img src="assets/image/icons/documents.png" alt="" class="map__icon" width="80px" width="80px">
-
 					<div class="map__text">можете также узнать написать свой отзыв</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
+
 	<!-- Map Section -->
 	<section class="map__section">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d35814.79648922948!2d49.07028860898581!3d55.872645869042834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z0J_Rj9GC0ZHRgNC-0YfQutCwINC_0LXRgdC-0YfQvdCw0Y8!5e0!3m2!1sru!2sru!4v1648462788866!5m2!1sru!2sru" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map__gps">
@@ -247,102 +251,135 @@
 
 
 	<!-- Register -->
-	<div class="register" id="register">
-		<div class="container">
-			<div class="register__inner">
-				<div class="register__title">ОФОРМЛЕНИЕ ВИЗЫ</div>
+	<form action="mail.php" method="POST">
+		<div class="register" id="register">
+			<div class="container">
+				<div class="register__inner">
 
-				<div class="group">
-					<label for="" class="group__label">Ваше имя*:</label>
-					<input type="text" class="group__input" name="name">
-				</div>
+					<!-- Title -->
+					<div class="register__title">ОФОРМЛЕНИЕ ВИЗЫ</div>
 
-				<div class="group">
-					<label for="" class="group__label">Ваш телефон*:</label>
-					<input type="tel" class="group__input" name="tel">
-				</div>
+					<!-- Group Name -->
+					<div class="group">
+						<label for="" class="group__label">Имя:</label>
+						<input type="text" class="group__input" name="name">
+					</div>
 
-				<div class="group">
-					<label for="" class="group__label">Ваш email:</label>
-					<input type="email" class="group__input" name="email">
-				</div>
+					<!-- Group Number -->
+					<div class="group">
+						<label for="" class="group__label">Телефон:</label>
+						<input type="tel" class="group__input" name="tel">
+					</div>
 
-				<!-- Select -->
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><div class="select">
-			    <input class="select__input" type="hidden" name="">
-			    <div class="select__head">Выберите</div>
-			    	<ul class="select__list" style="display: none;">
-			        	<li class="select__item">Виза на 30 дней</li>
-			        	<li class="select__item">Виза на 90 дней</li>
-			        	<li class="select__item">Продление визы на 90 дней</li>
-			        </ul>
-				</div>
-				<input class="btn__input btn-default" type="submit" name="submit" value="Отправить">
-				<div class="contact">
-					<div class="contact__title">Связаться через</div>
-					<div class="contact__inner">
-						<p><input name="dzen" type="radio" value="nedzen">WhatsApp</p>
-		    			<p><input name="dzen" type="radio" value="dzen">Telegramm</p>
-		    			<p><input name="dzen" type="radio" value="pdzen" checked>Телефон</p>
-		    			<p><input name="dzen" type="radio" value="pdzen" checked>Email</p>
-	    			</div>
+					<!-- Group Email -->
+					<div class="group">
+						<label for="" class="group__label group__email">Email:</label>
+						<input type="email" class="group__input" name="email">
+					</div>
+					
+					<!-- Select -->
+						<select name="country" class="select">
+							<option value="Виза на 30 дней" class="select__inner">Виза на 30 дней</option>
+							<option value="Виза на 90 дней" class="select__inner">Виза на 90 дней</option>
+							<option value="Продление визы на 90 дней" class="select__inner">Продление визы на 90 дней</option>
+						</select>
+
+					<!-- Btn -->
+					<input class="btn__input btn-default" type="submit" name="submit" value="Отправить">
+
 				</div>
 			</div>
-		</div>
-	</div> <!-- Register -->
+		</div> 
+	</form> <!-- Register -->
 
 	<!-- Footer -->
 	<footer class="footer">
 		<div class="container">
 			<div class="footer__inner">
+
+				<!-- Copy Right -->
 				<div class="copy__right">2013-2022 © VISA | Лицензия №801364</div>
+				<!-- Nav -->
 				<nav class="nav__footer">
 					<a href="#" class="link__footer">Home</a>
-					<a href="#register" class="link__footer">To order</a>
+					<a href="#register" class="link__footer">To rder</a>
 					<a href="#companion" class="link__footer">About</a>
 					<a href="#information" class="link__footer">Information</a>
+					<!-- Share -->
+					<a href="mailto:miraska.007@gmail.com" class="footer__share"><img src="assets/image/icons/share.png" alt="" width="20px"></a>
 				</nav>
 			</div>
 		</div>
-	</footer>
+	</footer> <!-- Footer -->
 
 
+	<!-- Popup -->
+	<div class="b-popup" id="popup1">
+   		<div class="b-popup-content">
+   			<a href="javascript:PopUpHide()" class="close__popup"><img src="assets/image/icons/close.png" alt="" width="30px" class="close__icon"></a>
+   			<div class="popup__title">ИНФОРМАЦИЯ</div>
 
-
-
-
-
+        	<span class="span__popup">Мы убедительно просим Вас проверить список необходимых документов перед их отправкой. Это позволит свести к минимуму вероятность задержки или отклонения Вашей заявки из-за того, что документы были поданы ненадлежащим или некорректным образом.
+			 Для каждого заявителя необходимо подготовить отдельный пакет подтверждающих документов и визовую анкету (например, если Вы путешествуете с детьми). В каждом пакете должно иметься своё подтверждение проживания. Документы принимаются только в формате А4.
+			Пожалуйста, ознакомьтесь с памяткой, составленной греческими консульскими службами. Она поможет Вам подготовить необходимые для подачи документы. Заявителям, подающим заявление в визовые центры консульской юрисдикции г. Москвы, необходимо перейти по этой ссылке. Заявителям, подающим заявление в визовые центры консульской юрисдикции г. Санкт-Петербурга, необходимо перейти по этой ссылке. Заявителям, подающим заявление в визовые центры консульской юрисдикции г. Новороссийска, необходимо перейти по этой ссылке.
+			С 14 сентября 2015 года оформление шенгенской визы предусматривает сбор биометрических данных. По этой причине заявители должны лично посетить визовый центр Греции.
+			По согласованию с консульством для последующих заявлений в течение следующих 59 месяцев отпечатки пальцев могут быть скопированы из предыдущего файла заявления из Визовой информационной системы (VIS).
+			Подача заявления на визу и получение паспорта могут быть сделаны заявителем лично в случае индивидуальных заявлений или аккредитованными туристическими агентами в случае группы. Подача по доверенности не допускается.Получение паспортов может осуществляться через законного представителя. Пожалуйста, нажмите здесь для дополнительной информации по процедуре получения паспорта. Для семей, по крайней мере один член семьи должен посетить визовый центр (обязательно при себе иметь оригинал документа, подтверждающего родство)Пожалуйста, ознакомьтесь со следующими ссылками для получения дополнительной информации по вышеуказанным вопросам.</span>
+    	</div>
+	</div> <!-- Popup -->
 
 	<!-- Java script -->
-	<script>
-		jQuery(($) => {
-    $('.select').on('click', '.select__head', function () {
-        if ($(this).hasClass('open')) {
-            $(this).removeClass('open');
-            $(this).next().fadeOut();
-        } else {
-            $('.select__head').removeClass('open');
-            $('.select__list').fadeOut();
-            $(this).addClass('open');
-            $(this).next().fadeIn();
-        }
-    });
+<script>
+	// Header function
+		$(function() {
+	 let header = $('.header');
+ 	let hederHeight = header.height(); // вычисляем высоту шапки
+  
+ 	$(window).scroll(function() {
+   		if($(this).scrollTop() > 800) {
+    	header.addClass('header_fixed');
+    	header.css({
+      		'padding': '5px 0',
+      		'background': '#006493',
+      		'border-bottom': '2px solid #000',
+      		'transition': '.3s'
+    	});
 
-    $('.select').on('click', '.select__item', function () {
-        $('.select__head').removeClass('open');
-        $(this).parent().fadeOut();
-        $(this).parent().prev().text($(this).text());
-        $(this).parent().prev().prev().val($(this).text());
-    });
+	}
 
-    $(document).click(function (e) {
-        if (!$(e.target).closest('.select').length) {
-            $('.select__head').removeClass('open');
-            $('.select__list').fadeOut();
-        }
+    else {
+    	header.removeClass('header_fixed');
+    	header.css({
+      	'border-bottom': '1px solid #fff',
+      	'background': 'none',
+      	'transition': '.3s'
     });
+    	$('body').css({
+     	'paddingTop': 0 // удаляю отступ у body, равный высоте шапки
+    })
+   }
+ });
 });
 
-	</script>
+
+
+	// Popup
+	$(document).ready(function(){
+	        //Скрыть PopUp при загрузке страницы    
+	        PopUpHide();
+	    });
+	    //Функция отображения PopUp
+	    function PopUpShow(){
+	        $("#popup1").show();
+	    }
+	    //Функция скрытия PopUp
+	    function PopUpHide(){
+	        $("#popup1").hide();
+	    }
+
+	    foo.onclick = function(){
+	  this.classList.toggle('rotate')
+	}
+</script>
 </body>
 </html>
